@@ -1,9 +1,19 @@
-node {
-	stage 'Checkout'
-		checkout scm
-
-	stage 'Build'
-		//branch name from Jenkins environment variables
-		echo "My branch is: ${env.BRANCH_NAME}"
-
+pipeline {
+    agent any
+    stages {
+        stage('BUILD') {
+			when {
+  				branch 'master'
+			}
+			steps {
+				echo "Estoy en la rama MASTER"
+			}
+			when {
+  				branch 'develop'
+			}
+			steps {
+				echo "Estoy en la rama DEVELOP"
+			}
+        }
+    }
 }
