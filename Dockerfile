@@ -2,6 +2,8 @@ FROM nginx:stable
 
 COPY static/index.html /usr/share/nginx/html/
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+
+#Copiamos el certificado
 RUN mkdir /etc/nginx/certs
 COPY certs/*.pem /etc/nginx/certs/
 
